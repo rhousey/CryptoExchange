@@ -33,22 +33,20 @@ class App extends Component {
    console.log('get buy rec - binance price : ' + binanceP + '  coinbase price '+ coinbaseP)
   if(binanceP < coinbaseP){
     this.setState({
-      binancePriceColor: 'red', 
-      coinbasePriceColor: 'green'
+      binancePriceColor: 'green', 
+      coinbasePriceColor: 'red'
     })
   }
   else if (binanceP > coinbaseP){
     this.setState({
-      binancePriceColor: 'green', 
-      coinbasePriceColor: 'red'
+      binancePriceColor: 'red', 
+      coinbasePriceColor: 'green'
     })
   }
   }
 
 getSellRecc(binanceP, coinbaseP) {
-  console.log('get sell rec - binance price : ' + binanceP + '  coinbase price '+ coinbaseP)
-
-  if(binanceP >  coinbaseP){
+  if(binanceP > coinbaseP){
     this.setState({
       binancePriceColor: 'green', 
       coinbasePriceColor: 'red'
@@ -86,7 +84,6 @@ getSellRecc(binanceP, coinbaseP) {
       })
     })
   ]).then(
-    
  this.getBuyRecc(this.state.binancePrice, this.state.coinbasePrice)
   );
 }
