@@ -1,15 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import bnbLogo from './bnb_logo.png';
-import bitlogo from './bitcoinlogo.png';
 import axios from 'axios';
-import {MDCTextField} from '@material/textfield';
-import { FormControl } from 'react-bootstrap';
 import binancesvg from './Binance-Logo.wine.svg';
 import BtcViewWidget from './BtcViewWidget';
 import EthViewWidget from './EthViewWidget';
 import coinbaselogo from './coinbase.svg';
-import { Row, Col, Dropdown, InputGroup } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import bitcoinLogo from './bitcoinlogo.svg.png'; 
 import etherLogo from './ethereum-logo-portrait-black.png';
 import ImageClick from './ImageClick.js'; 
@@ -19,18 +14,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 const imageArray = [{image: 'bitcoinlogo',width:200, height:200, name: "Bitcoin"},{image: 'Ethereum_logo_2014.svg', name: "Ethereum", width:150, height:200}]
 
-
+// Function to format the price 
 function currencyFormat(num) {
  return '$' + Number(parseFloat(num).toFixed(2)).toLocaleString('en', {
   minimumFractionDigits: 2
 });
 }
 class App extends Component {
-  componentDidMount() {
-  }
+  
 
- getBuyRecc(binanceP, coinbaseP) {
-   console.log('get buy rec - binance price : ' + binanceP + '  coinbase price '+ coinbaseP)
+/*function to get buy recommendation - get the lower price */ 
+ getBuyRec(binanceP, coinbaseP) {
   if(binanceP < coinbaseP){
     this.setState({
       binancePriceColor: 'green', 
@@ -44,8 +38,8 @@ class App extends Component {
     })
   }
   }
-
-getSellRecc(binanceP, coinbaseP) {
+/*function to get sell recommendation - get the higher price */ 
+getSellRec(binanceP, coinbaseP) {
   if(binanceP > coinbaseP){
     this.setState({
       binancePriceColor: 'green', 
@@ -60,7 +54,8 @@ getSellRecc(binanceP, coinbaseP) {
   }
   }
 
-
+  /* Function to handle the "view recommendations - 
+  Fetch buy OR sell prices from binance and coinbase for selected exchange */
  async toggleButtonState(event){ 
   event.preventDefault(); 
   if(this.state.type == "Buy" && this.state.unit == "BTC"){
@@ -84,7 +79,7 @@ getSellRecc(binanceP, coinbaseP) {
       })
     })
   ]).then(
- this.getBuyRecc(this.state.binancePrice, this.state.coinbasePrice)
+ this.getBuyRec(this.state.binancePrice, this.state.coinbasePrice)
   );
 }
  else if(this.state.type == "Sell" && this.state.unit == "BTC"){
@@ -108,7 +103,7 @@ getSellRecc(binanceP, coinbaseP) {
       })
     })
   ])
- .then(this.getSellRecc(this.state.binancePrice, this.state.coinbasePrice))
+ .then(this.getSellRec(this.state.binancePrice, this.state.coinbasePrice))
  }
  else if(this.state.type == "Buy" && this.state.unit == "ETH"){
   await axios.all([ 
@@ -131,7 +126,7 @@ getSellRecc(binanceP, coinbaseP) {
       })
     })
   ])
-  this.getBuyRecc(this.state.binancePrice, this.state.coinbasePrice)
+  this.getBuyRec(this.state.binancePrice, this.state.coinbasePrice)
 
  }
  else if(this.state.type == "Sell" && this.state.unit == "ETH"){
@@ -155,14 +150,11 @@ getSellRecc(binanceP, coinbaseP) {
      })
    })
  ])
- this.getSellRecc(this.state.binancePrice, this.state.coinbasePrice)
-
-  
-
-
+ this.getSellRec(this.state.binancePrice, this.state.coinbasePrice)
 }
  }
 
+// function to set state of selected currency (bitcoin / ethereum)
   handleCurrencyClick(event) {
     console.log(event.target.src); 
     this.setState({
@@ -192,7 +184,7 @@ getSellRecc(binanceP, coinbaseP) {
     handleAmountChange = e => {
         console.log({e}); 
     }
-
+// function to handle buy/sell button click
      BuySellButton(event){
        this.setState({
          type: event.target.name
@@ -206,23 +198,7 @@ getSellRecc(binanceP, coinbaseP) {
        })
         console.log(event.target.name); 
     }
-    onSubmit(){
-      if(this.state.unit == "BTC"){
-          console.log('btc'); 
-          var x = new XMLHttpRequest(); 
-         x.open('GET',"https://api.binance.com/api/v3/ticker/bookTicker?symbol=BTCUSDT", true );
-          x.onload = function(){ 
-              var result = JSON.parse(x.responseText); 
-              console.log(result); 
-              console.log('Buy Price: $' + result['askPrice']); 
-              this.setState =({
-                  buyPrice: result['askPrice']
-              })
-        x.send(); 
-        }
-      }
-    }
-    
+    // constructor 
     constructor(props) {
         super(props)
         this.myRef = React.createRef();
@@ -242,7 +218,6 @@ getSellRecc(binanceP, coinbaseP) {
 
         }
         this.toggleButtonState = this.toggleButtonState.bind(this)
-
           } 
 
     
@@ -255,11 +230,8 @@ getSellRecc(binanceP, coinbaseP) {
             <ImageClick images = {imageArray} doSomethingAfterClick ={(e) => this.handleCurrencyClick(e) }/>
    <Row> 
    <Col> 
-              
-            
             <ButtonGroup buttons = {
-                ["Sell", "Buy"]
-            }
+                ["Sell", "Buy"] }
             doSomethingAfterClick = {(e) => this.BuySellButton(e)}/>
 </Col>
 </Row> 
@@ -269,12 +241,9 @@ getSellRecc(binanceP, coinbaseP) {
 <Row>
   <div> 
 {this.state.viewWidget}
-
 </div>
   </Row> 
- 
- 
- <Row >
+ <Row>
  <div id = 'submitContainer'>
  <button className = "submitButton" onClick = {this.toggleButtonState}> View Recommendations </button> 
  
