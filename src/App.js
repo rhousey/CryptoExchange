@@ -6,6 +6,8 @@ import axios from 'axios';
 import {MDCTextField} from '@material/textfield';
 import { FormControl } from 'react-bootstrap';
 import binancesvg from './Binance-Logo.wine.svg';
+import BtcViewWidget from './BtcViewWidget';
+import EthViewWidget from './EthViewWidget';
 import coinbaselogo from './coinbase.svg';
 import { Row, Col, Dropdown, InputGroup } from 'react-bootstrap';
 import bitcoinLogo from './bitcoinlogo.svg.png'; 
@@ -15,24 +17,16 @@ import React, { Component, useState, useEffect, useRef } from 'react';
 import ButtonGroup from './Radio';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import { icons } from 'react-icons';
-import { CSSTransition } from 'react-transition-group';
-import { IconName, MdArrowBack, MdCenterFocusStrong, MdChevronRight, MdSettings, MdSettingsSuggest } from "react-icons/md";
-import ImportScript from './TradingViewWidget';
-const imageArray = [{image: 'bitcoinlogo',width:200, height:200},{image: 'Ethereum_logo_2014.svg', width:150, height:200}]
+const imageArray = [{image: 'bitcoinlogo',width:200, height:200, name: "Bitcoin"},{image: 'Ethereum_logo_2014.svg', name: "Ethereum", width:150, height:200}]
+
 
 function currencyFormat(num) {
- // return (Number(num.replace(/\D/g, '')) || '').toLocaleString();
-
  return '$' + Number(parseFloat(num).toFixed(2)).toLocaleString('en', {
   minimumFractionDigits: 2
 });
 }
 class App extends Component {
   componentDidMount() {
- 
-    //this.myRef.current.appendChild(script);
-
   }
 
  getBuyRecc(binanceP, coinbaseP) {
@@ -183,13 +177,18 @@ getSellRecc(binanceP, coinbaseP) {
     if((event.target.src).includes('bitcoinlogo')){
         console.log('bitcoin')
         this.setState({
-            unit : "BTC"
+            unit : "BTC",
+            currencyName: "Bitcoin", 
+            viewWidget: <BtcViewWidget/>
+            
         })
     }
     else{
         console.log('eth')
         this.setState({
-            unit: "ETH"
+            unit: "ETH",
+            currencyName: "Ethereum",
+            viewWidget: <EthViewWidget/>
         }) }}
 
 
@@ -240,7 +239,9 @@ getSellRecc(binanceP, coinbaseP) {
             coinbasePrice:null, 
             binancePriceColor: 'transparent',
             coinbasePriceColor: 'transparent', 
-            yahooFinData: ""
+            yahooFinData: "", 
+            viewWidget: null, 
+            currencyName: ""
 
         }
         this.toggleButtonState = this.toggleButtonState.bind(this)
@@ -251,24 +252,28 @@ getSellRecc(binanceP, coinbaseP) {
     render() {
         return( 
         <div id = 'container' className = 'container md'>
-    
-    <div id = "formsection">
-    <Row> 
-    <Col > 
-            <ImageClick images = {imageArray} doSomethingAfterClick ={(e) => this.handleCurrencyClick(e) }></ImageClick>
-                <Row>
-                <Col class = 'col-4'>
+        <div id = "formsection"> 
+        <Row> 
+        <Col>
+            <ImageClick images = {imageArray} doSomethingAfterClick ={(e) => this.handleCurrencyClick(e) }/>
+   <Row> 
+   <Col> 
+              
+            
             <ButtonGroup buttons = {
                 ["Sell", "Buy"]
             }
             doSomethingAfterClick = {(e) => this.BuySellButton(e)}/>
 </Col>
-</Row>  
-</Col>
-</Row>
+</Row> 
+</Col> 
+</Row> 
+
 <Row>
-  
- <ImportScript/>
+  <div> 
+{this.state.viewWidget}
+
+</div>
   </Row> 
  
  
@@ -300,7 +305,8 @@ getSellRecc(binanceP, coinbaseP) {
         </div>
 
      </div>
-     </div>
+     </div> 
+     
         )
           }
         }

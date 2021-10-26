@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import React from "react";
-const ImportScript = () => {
+const BtcViewWidget = () => {
     const style = localStorage.getItem('theme');
-    const tvkTheme = style && style == 'dark-mode' ? 'dark' : 'light';
+    const theme = style && style == 'dark-mode' ? 'dark' : 'light';
     useEffect(() => {
       const script = document.createElement('script');
       script.src = 'https://s3.tradingview.com/tv.js';
@@ -18,7 +18,7 @@ const ImportScript = () => {
           width: '600',
           height: '400' ,
           locale: 'en',
-          colorTheme: tvkTheme == 'dark' ? 'dark' : 'dark',
+          colorTheme: theme == 'dark' ? 'dark' : 'dark',
           gridLineColor: '#2A2E39',
           "enable_publishing":true, 
           trendLineColor: '#1976D2',
@@ -48,4 +48,4 @@ const ImportScript = () => {
       </div>
     );
   };
-  export default ImportScript;
+  export default BtcViewWidget;
