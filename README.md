@@ -1,1 +1,7 @@
-## Crypto Exchange App
+# Crypto Exchange App
+
+## Run
+
+'''
+npm start
+'''
