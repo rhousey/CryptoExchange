@@ -1,177 +1,190 @@
 .App {
-    font-family: inherit;
-    background-color: #1c1a3c;
-    background-image: #1c1a3c;
-    color: #1c1a3c;
+  font-family: inherit;
+  background-color: #1c1a3c;
+  background-image: #1c1a3c;
+  color: #1c1a3c;
 }
-#images{
-    display:inline-block;
-    color: white; 
+#images {
+  display: inline-block;
+  color: white;
 }
-#cap{
-    display:block; 
+#cap {
+  display: block;
 }
 
-#tradingviewcontainer{
-    height:500px; 
-    width:500px;
+#tradingviewcontainer {
+  height: 500px;
+  width: 500px;
 }
 
 #container {
-    align-items: center;
-    text-align: center;
-    box-sizing: border-box;
-    border: '50px solid rgba(0, 0, 0, 0.05)';
-    border-width: 100px;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  border: "50px solid rgba(0, 0, 0, 0.05)";
+  border-width: 100px;
 }
 
 #inputgroupamount {
-    width: 300px;
-    padding-top: 40px;
-    padding-bottom: 100px;
-    height: 50px;
+  width: 300px;
+  padding-top: 40px;
+  padding-bottom: 100px;
+  height: 50px;
 }
 
-
 #formsection {
-    align-items: center;
-    text-align: center;
-    align-self: center;
-    background: hsla(236, 33%, 24%, 1);
-    background: linear-gradient(135deg, hsla(236, 33%, 24%, 1) 0%, hsla(236, 30%, 44%, 1) 59%, hsla(238, 76%, 74%, 1) 100%);
-    background: -moz-linear-gradient(135deg, hsla(236, 33%, 24%, 1) 0%, hsla(236, 30%, 44%, 1) 59%, hsla(238, 76%, 74%, 1) 100%);
-    background: -webkit-linear-gradient(135deg, hsla(236, 33%, 24%, 1) 0%, hsla(236, 30%, 44%, 1) 59%, hsla(238, 76%, 74%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#282B50", endColorstr="#4E5290", GradientType=1);
+  align-items: center;
+  text-align: center;
+  align-self: center;
+  background: hsla(236, 33%, 24%, 1);
+  background: linear-gradient(
+    135deg,
+    hsla(236, 33%, 24%, 1) 0%,
+    hsla(236, 30%, 44%, 1) 59%,
+    hsla(238, 76%, 74%, 1) 100%
+  );
+  background: -moz-linear-gradient(
+    135deg,
+    hsla(236, 33%, 24%, 1) 0%,
+    hsla(236, 30%, 44%, 1) 59%,
+    hsla(238, 76%, 74%, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    135deg,
+    hsla(236, 33%, 24%, 1) 0%,
+    hsla(236, 30%, 44%, 1) 59%,
+    hsla(238, 76%, 74%, 1) 100%
+  );
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#282B50", endColorstr="#4E5290", GradientType=1);
 }
 
 h1 {
-    font-size: 30px;
-    font-weight: bolder;
-    background: #f7f2f7;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
+  font-size: 30px;
+  font-weight: bolder;
+  background: #f7f2f7;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
 }
 
 body {
-    background-color: #1c1a3c;
+  background-color: #1c1a3c;
 }
 
-#binancepricediv{
-    display: inline-block;
-    margin: 5px; 
-    border-radius: 5px; 
-
+#binancepricediv {
+  display: inline-block;
+  margin: 5px;
+  border-radius: 5px;
 }
-#coinbasepricediv{
-    display:inline-block; 
-    margin: 5px; 
-    border-radius:5px; 
+#coinbasepricediv {
+  display: inline-block;
+  margin: 5px;
+  border-radius: 5px;
 }
-#view1{
-    borderBottomColor: 'black'; 
-    borderBottomWidth: 1; 
-    marginLeft: 5; 
-    marginRight: 5;
-  }
-
-#binPrice{
-    color:white; 
-    display:inline-block;
-    margin:10px; 
-}
-#banner{
-    overflow:hidden; 
-    justify-content:space-around ;
-}
-#exchangeView{ 
-align-items:center; 
-justify-content: center;
-/*text-align:center; */
-}
-#coinsvg{
-    display:inline-block;
-}
-#binancesvg{
-    display:inline-block;
+#view1 {
+  borderbottomcolor: "black";
+  borderbottomwidth: 1;
+  marginleft: 5;
+  marginright: 5;
 }
 
-#coinbasePrice{
-    color:white; 
-    margin: 10px; 
-    display:inline-block; 
+#binPrice {
+  color: white;
+  display: inline-block;
+  margin: 10px;
+}
+#banner {
+  overflow: hidden;
+  justify-content: space-around;
+}
+#exchangeView {
+  align-items: center;
+  justify-content: center;
+  /*text-align:center; */
+}
+#coinsvg {
+  display: inline-block;
+}
+#binancesvg {
+  display: inline-block;
+}
+
+#coinbasePrice {
+  color: white;
+  margin: 10px;
+  display: inline-block;
 }
 text {
-    font-size: 30px;
-    font-weight: bolder;
-    background: #f7f2f7;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  font-size: 30px;
+  font-weight: bolder;
+  background: #f7f2f7;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .customImage {
-    margin-left: 60px;
-    margin-right:60px; 
-    margin-bottom:10px; 
-    margin-top:20px; 
-    cursor: pointer;
-    opacity: .1;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  opacity: 0.1;
 }
 
 .active1 {
-    opacity: 100;
+  opacity: 100;
 }
 
 .submitButton {
-    width: 300px;
-    height: 80px;
-    letter-spacing: 0.5px;
-    color: white;
-    background-color: #7b7fd7;
-    font-size: 20px;
-    font-weight: bolder;
-    border: none;
-    margin: 20px;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 300px;
+  height: 80px;
+  letter-spacing: 0.5px;
+  color: white;
+  background-color: #7b7fd7;
+  font-size: 20px;
+  font-weight: bolder;
+  border: none;
+  margin: 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
-#test{ 
-    width:30; 
-    height:50; 
+#test {
+  width: 30;
+  height: 50;
 }
 
 .customButton {
-    width: 150px;
-    height: 50px;
-    letter-spacing: 0.5px;
-    color: #bdbcc6;
-    background-color: white;
-    font-size: 32px;
-    font-weight: bolder;
-    border: none;
-    margin: 20px;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 150px;
+  height: 50px;
+  letter-spacing: 0.5px;
+  color: #bdbcc6;
+  background-color: white;
+  font-size: 32px;
+  font-weight: bolder;
+  border: none;
+  margin: 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .active {
-    color: #bdbcc6;
-    background-color: #222042;
-    /*  border: 1.5px solid rgb(25, 26, 24);*/
+  color: #bdbcc6;
+  background-color: #222042;
+  /*  border: 1.5px solid rgb(25, 26, 24);*/
 }
 
 #dropdownbutton {
-    color: #2D7DE6;
-    background-color: #fff;
+  color: #2d7de6;
+  background-color: #fff;
 }
 #binanceimagebtn {
-    background-image: url('./bnb_logo.png');
-    width: 400px;
+  background-image: url("./bnb_logo.png");
+  width: 400px;
 }
 .App-link {
-    color: #61dafb;
+  color: #61dafb;
 }
 
 #label1 {
-    color: white;
+  color: white;
 }
